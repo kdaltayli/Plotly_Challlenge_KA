@@ -14,12 +14,12 @@ function getData(sampleid){
     console.log(data);
 // 4. Display the sample metadata, i.e., an individual's demographic information.
 
-    var metaData = data.metadata.filter(row => row.id.toString() === sampleid);
+    var metaData = data.metadata.filter(row => row.id.toString() === sampleid)[0];
     console.log("All metaData is :", metaData);
     
     d3.select(".panel-body").html("");
     
-    Object.entries(metaData[0]).forEach(([k,v]) => {
+    Object.entries(metaData).forEach(([k,v]) => {
       d3.select(".panel-body").append("h6").text(`${k} : ${v}`);
     
     });
