@@ -1,8 +1,16 @@
 
+//Init Function
+function init(){
+
+  getData("940");
+  getBarPlot("940");
+  getBubbleChart("940");
+
+}
 // Use the D3 library to read in `samples.json`.
 function getData(sampleid){
 
-    d3.json("./data/samples.json").then(function(data) {
+    d3.json("./Belly_Button/data/samples.json").then(function(data) {
     console.log(data);
 // 4. Display the sample metadata, i.e., an individual's demographic information.
 
@@ -23,7 +31,7 @@ function getData(sampleid){
 // 2. Create a horizontal bar chart with a dropdown menu to display the top 10 OTUs found in that individual.
 function getBarPlot(sampleid){
 
-d3.json("./data/samples.json").then(function(data) {
+d3.json("./Belly_Button/data/samples.json").then(function(data) {
   var samples= data.samples.filter(row => row.id===sampleid)[0];
   console.log(samples);
 
@@ -69,7 +77,7 @@ Plotly.newPlot("bar",data,layout);
 // 3. Create a bubble chart that displays each sample.
 function getBubbleChart(sampleid){
 
-  d3.json("./data/samples.json").then(function(data) {
+  d3.json("./Belly_Button/data/samples.json").then(function(data) {
     var samples= data.samples.filter(row => row.id===sampleid)[0];
     console.log(samples);
   // * Use `sample_values` as the values for the bar chart.
@@ -112,7 +120,7 @@ Plotly.newPlot('bubble', data2, layout2);
 // 6. Update all of the plots any time that a new sample is selected.
 function getId(){
   
-  d3.json("./data/samples.json").then(function(data){
+  d3.json("./Belly_Button/data/samples.json").then(function(data){
     console.log(data);
     
   
@@ -133,5 +141,5 @@ function getId(){
     getBubbleChart(sampleid);
     getData(sampleid);
   };
- 
+ init();
 // Additionally, you are welcome to create any layout that you would like for your dashboard. An example dashboard is shown below:
